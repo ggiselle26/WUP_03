@@ -43,7 +43,7 @@ basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 basicCN + geom_boxplot()
 ```
 
- This boxplot shows that  
+ This boxplot shows that there are more students sitting in the back who drink alcohol then the front and middle row  
  
 ## Numerical summary
 
@@ -51,22 +51,22 @@ basicCN + geom_boxplot()
 favstats(alcohol~Seat,data=ucdavis1)
 ```
 ## InferentiaL Results
-
-
-
-## Now with ggplot - first select the basic data
-
-
- 
- 
-  
-### get fancy  
-
 ```{r}
-basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
 ```
 
+the p value is 0.000116, is less than 0.05 so we reject the null hypothesis    
+
+There is a difference in alcohol consumption based on where people sit  
+
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
+This shows that the middle-back and front-back consume more alcohol then middle-front
 
 ## Conclusions
-
+In conclusion our goal was to find out if there a difference between the alcohol consumed between the row you choose to sit in? We did find out that there is a difference between the rows using the tukey test data and we also reject the null hypothesis because it is 0.000116 is less than 0.05
 
