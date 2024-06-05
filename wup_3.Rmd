@@ -18,25 +18,47 @@ davisdata <- read.csv(file="UCDavis.csv")
 # Introduction
  Our Goal is to answer this question Is there a difference between the alcohol consumed between the row you choose to sit in??
 
-The data came from UCDavis in the year...
+The data came from UCDavis in the year ...
 
 $H_0$: There is no difference between the average number of drinks imbibed between people conditioned on the row they sit in.
 
 $H_A$: The average number drinks is different between at least two rows.   
 
+# Methods 
+In the data set davisdata seat is a categorical variable, alcohol is numerical
 
+We try to predict alcohol based on where you sit. So we use the numerical~categorical helper file
 
-## Now with ggplot - first select the basic data
+# Results
 
+## Descriptive Results 
+
+### Graphical summary 
 ```{r}
 basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```
-## Now add in boxplot
+ Now add in boxplot
 
 ```{r}
 basicCN + geom_boxplot()
 ```
-  
+
+ This boxplot shows that  
+ 
+## Numerical summary
+
+```{r}
+favstats(alcohol~Seat,data=ucdavis1)
+```
+## InferentiaL Results
+
+
+
+## Now with ggplot - first select the basic data
+
+
+ 
+ 
   
 ### get fancy  
 
@@ -44,9 +66,6 @@ basicCN + geom_boxplot()
 basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
 
-## Numerical Summarys 
-
-## Inferential Tests
 
 ## Conclusions
 
