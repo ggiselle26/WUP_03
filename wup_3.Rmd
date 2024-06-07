@@ -50,6 +50,9 @@ basicCN + geom_boxplot()
 ```{r}
 favstats(alcohol~Seat,data=ucdavis1)
 ```
+This shows that the back seat consumes about 55% alcohol than the front which is about 20% or middle which is 35%. 
+
+
 ## InferentiaL Results
 ```{r}
 model1 <- aov(alcohol~Seat,data=davisdata)
